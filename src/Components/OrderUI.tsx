@@ -3,7 +3,6 @@ import OrderAPI from '../API/OrderAPI';
 import OrderList from './OrderList';
 import OrderlineList from './OrderlineList';
 import { connect } from 'react-redux';
-
 import { ordersInitialize } from "../Features/OrderSlice";
 
 import {Order } from '../Interfaces/Order';
@@ -39,7 +38,6 @@ export class OrderUI extends Component<Props, State> {
     render() {
       return (
         <div>
-            <h1>Orders:</h1>
             <OrderList/>
             <h1>Orderlines:</h1>
             <OrderlineList/>  

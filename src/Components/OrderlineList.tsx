@@ -27,7 +27,7 @@ export default function OrderlineList({}: Props) {
             </thead>
             <tbody>
               {order?.orderlines.map(orderline => {
-                return <OrderlineRowUI key={orderline.id} orderline={orderline}/>
+                return <OrderlineRowUI key={orderline.id} orderline={orderline} orderId={order.id}/>
               })}
             </tbody>
             <tfoot>
