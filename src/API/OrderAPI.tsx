@@ -19,7 +19,7 @@ class OrderAPI {
       }
     }
 
-    async deleteOrder(orderId: number) : Promise<void> {
+    async deleteOrder(orderId: number) : Promise<boolean> {
       try {
           const response = await fetch(API_URL + 'orders/' + orderId, {
               method: 'DELETE'
@@ -29,7 +29,9 @@ class OrderAPI {
           }
       } catch (error) {
           console.error(error);
+          return false;    
       }
+      return true;    
   }
 
   async updateOrder(order: Order) : Promise<Order | null> {
