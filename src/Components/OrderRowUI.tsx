@@ -1,9 +1,11 @@
 import React from 'react'
 import {Order } from '../Interfaces/Order';
 import {OrderLine } from '../Interfaces/OrderLine';
+import OrderAPI from '../API/OrderAPI';
+import Button from 'react-bootstrap/Button';
 
 import { useDispatch } from "react-redux";
-import { updateCustomerName, updateCustomerEmail, updateCustomerPhone, updateDeliveryDate } from "../Features/OrderSlice";
+import { updateOrder, deleteOrder } from "../Features/OrderSlice";
 
 interface Props {
     order: Order;
@@ -13,31 +15,60 @@ interface Props {
 export default function OrderRowUI({order, clickOrder}: Props) {
   const dispatch = useDispatch();
 
+  const handleCustomerName = async (e: React.FocusEvent<HTMLInputElement>) => {
+    const newOrder = { ...order };
+    newOrder.customerName = e.target.value;
+    const restOrder = await OrderAPI.updateOrder(newOrder);
+    restOrder && dispatch(updateOrder({ id: restOrder.id, order: restOrder }));
+  };
+
+  const handleCustomerEmail = async (e: React.FocusEvent<HTMLInputElement>) => {
+    const newOrder = { ...order };
+    newOrder.customerEmail = e.target.value;
+    const restOrder = await OrderAPI.updateOrder(newOrder);
+    restOrder && dispatch(updateOrder({ id: restOrder.id, order: restOrder }));
+  };
+
+  const handleCustomerPhone = async (e: React.FocusEvent<HTMLInputElement>) => {
+    const newOrder = { ...order };
+    newOrder.customerPhone = e.target.value;
+    const restOrder = await OrderAPI.updateOrder(newOrder);
+    restOrder && dispatch(updateOrder({ id: restOrder.id, order: restOrder }));
+  };
+
+  const handleDeliveryDate = async (e: React.FocusEvent<HTMLInputElement>) => {
+    const newOrder = { ...order };
+    if(e.target.valueAsDate)
+    {
+      newOrder.deliveryDate = e.target.valueAsDate.toISOString();
+      const restOrder = await OrderAPI.updateOrder(newOrder);
+      restOrder && dispatch(updateOrder({ id: restOrder.id, order: restOrder }));
+    }
+  };
+
+  const handleRemoveClick = async () => {
+      const success = await OrderAPI.deleteOrder(order.id);
+      success && dispatch(deleteOrder({ id: order.id }));
+
+  };
+
   return (
     <tr key={order.id} onClick={() => clickOrder(order.id)}>
         <td>{order.orderNumber}</td>
         <td>
-            <input type="text" 
-                   value={order.customerName} 
-                   onChange={(e) => dispatch(updateCustomerName({id : order.id, customerName : e.target.value}))} 
-            />
+          <input type="text" defaultValue={order.customerName} onBlur={handleCustomerName} />
         </td>
         <td>
-            <input type="text" 
-                   value={order.customerEmail} 
-                   onChange={(e) => dispatch(updateCustomerEmail({id : order.id, customerEmail : e.target.value}))} 
-            />
+          <input type="text" defaultValue={order.customerEmail} onBlur={handleCustomerEmail} />
         </td>
         <td>
-            <input type="text" 
-                   value={order.customerPhone} 
-                   onChange={(e) => dispatch(updateCustomerPhone({id : order.id, customerPhone : e.target.value}))} 
-            />
+          <input type="text" defaultValue={order.customerPhone} onBlur={handleCustomerPhone} />
         </td>
         <td>
-          <input  type="date" defaultValue={new Date(order.deliveryDate).toISOString().slice(0,10)} 
-            onChange={(e) => dispatch(updateDeliveryDate({id : order.id, deliveryDate : e.target.value}))}>
-            </input>
+          <input  type="date" defaultValue={order.deliveryDate.slice(0,10)} onBlur={handleDeliveryDate} />
+        </td>
+        <td>
+          <Button onClick={handleRemoveClick}>Remove</Button>
         </td>
     </tr>
   )
