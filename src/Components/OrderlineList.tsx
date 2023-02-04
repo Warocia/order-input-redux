@@ -2,7 +2,7 @@ import React from 'react'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useDispatch } from "react-redux";
-import { updateOrderline, updateOrder } from "../Features/OrderSlice";
+import { updateOrder } from "../Features/OrderSlice";
 import { useSelector } from "react-redux";
 import OrderAPI from '../API/OrderAPI';
 
@@ -16,29 +16,6 @@ interface Props {
   selectedOrderId : number | null;
 }
 
-async function AddNewOrderline(order : Order) : Promise<Order | null> 
-{
-  const emptyOrderLine: OrderLine = {
-      id: 0,
-      productName: '',
-      count: 0,
-      unitCost: 0,
-      totalCost: 0,
-      costUnit: ''
-  };
-
-  const newOrderlines = [
-      ...order.orderlines,
-      emptyOrderLine
-  ];
-
-  const updatedOrder = {
-    ...order,
-    orderlines: newOrderlines
-  };
-
-  return OrderAPI.updateOrder(updatedOrder);
-}
 
 export default function OrderlineList({selectedOrderId}: Props) {
   const dispatch = useDispatch();
@@ -49,6 +26,36 @@ export default function OrderlineList({selectedOrderId}: Props) {
     const foundOrder = allOrders.find(o => o.id === selectedOrderId);
     order = foundOrder || null;
   }
+
+  const handleAddClick = async () => {
+    if(order){
+      const emptyOrderLine: OrderLine = {
+        id: 0,
+        productName: '',
+        count: 0,
+        unitCost: 0,
+        totalCost: 0,
+        costUnit: ''
+      };
+  
+      const newOrderlines = [
+          ...order.orderlines,
+          emptyOrderLine
+      ];
+  
+      const updatedOrder = {
+        ...order,
+        orderlines: newOrderlines
+      };
+  
+      const restOrder = await OrderAPI.updateOrder(updatedOrder);
+      
+      if(restOrder)
+      {
+        dispatch(updateOrder({id : restOrder.id, order : restOrder}));    
+      }
+    }  
+  };
 
   return (
         <div>
@@ -73,15 +80,8 @@ export default function OrderlineList({selectedOrderId}: Props) {
                 <th>{order?.orderlines.reduce((sum, current) => sum + current.count, 0)}</th>
                 <th></th>
                 <th>{order?.orderlines.reduce((sum, current) => sum + (current.count * current.unitCost), 0)}€</th>
-                <th>{order ? <Button onClick={async () => {
-                  const restOrder = await AddNewOrderline(order!)
-                  if(restOrder)
-                  {
-                    dispatch(updateOrder({id : restOrder.id, order : restOrder}));
-                  }  
-                }
-               
-                }>Add</Button> : null}</th>
+                <th>{order ? <Button onClick={handleAddClick}>Add</Button> : null}
+                </th>
               </tr>
             </tfoot>
           </Table>

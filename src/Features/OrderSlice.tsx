@@ -69,31 +69,6 @@ const ordersSlice = createSlice({
             }
             return state;
         },
-        updateOrderline(state, action) {
-            const { id, newOrderline } = action.payload;
-
-            const index = state.findIndex(order => order.id === id);
-            if (index !== -1) {
-                const tempOrder : Order = { ...state[index] };
-
-                const orderlineIndex = tempOrder.orderlines.findIndex(orderline => orderline.id === newOrderline.id);
-
-                if (orderlineIndex !== -1){
-                    tempOrder.orderlines = [
-                            ...tempOrder.orderlines.slice(0, orderlineIndex),
-                            newOrderline,
-                            ...tempOrder.orderlines.slice(orderlineIndex + 1),
-                        ];
-
-                        return [
-                            ...state.slice(0, index),
-                            tempOrder,
-                            ...state.slice(index + 1),
-                        ];
-                }
-            }
-            return state;
-        },
         updateOrder(state, action) {
             const { id, order } = action.payload;
 
@@ -114,7 +89,6 @@ const ordersSlice = createSlice({
 
 export const selectAllOrders = (state: { orders: Order[] }) => state.orders;
 
-export const { ordersInitialize, updateCustomerName, updateCustomerEmail, updateCustomerPhone, updateDeliveryDate,
-     updateOrderline, updateOrder } = ordersSlice.actions
+export const { ordersInitialize, updateCustomerName, updateCustomerEmail, updateCustomerPhone, updateDeliveryDate, updateOrder } = ordersSlice.actions
 
 export default ordersSlice.reducer
