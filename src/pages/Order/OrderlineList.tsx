@@ -2,15 +2,15 @@ import React from 'react'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useDispatch } from "react-redux";
-import { updateOrder } from "../Features/OrderSlice";
+import { updateOrder } from "../../Features/OrderSlice";
 import { useSelector } from "react-redux";
-import OrderAPI from '../API/OrderAPI';
+import OrderAPI from '../../api/OrderAPI';
 
 import OrderlineRowUI from './OrderlineRowUI';
 
-import {OrderLine } from '../Interfaces/OrderLine';
-import {Order } from '../Interfaces/Order';
-import { selectAllOrders } from "../Features/OrderSlice"
+import {OrderLine } from '../../Interfaces/OrderLine';
+import {Order } from '../../Interfaces/Order';
+import { selectAllOrders } from "../../Features/OrderSlice"
 
 interface Props {
   selectedOrderId : number | null;
