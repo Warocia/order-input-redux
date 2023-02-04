@@ -10,10 +10,10 @@ import { PageSelector } from "./PageSelector";
 import { selectAllOrders } from "../Features/OrderSlice"
 
 interface Props {
-
-  }
+  clickOrder: (orderId : number) => void;
+}
   
-export default function OrderList({}: Props) {
+export default function OrderList({clickOrder}: Props) {
   const orders = useSelector(selectAllOrders)
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,7 +36,7 @@ export default function OrderList({}: Props) {
             </thead>
             <tbody>
               {orders.slice(startIndex, endIndex).map(order => {
-                return <OrderRowUI key={order.id} order={order}/>
+                return <OrderRowUI key={order.id} order={order} clickOrder={clickOrder}/>
               })}
             </tbody>
           </Table>

@@ -92,7 +92,7 @@ const ordersSlice = createSlice({
                 }
             }
             return state;
-        },
+        }
     }
 })
 

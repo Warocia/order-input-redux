@@ -15,6 +15,7 @@ interface Props {
 
 
 interface State {
+  selectedOrderId : number | null;
 }
 
 
@@ -23,7 +24,10 @@ export class OrderUI extends Component<Props, State> {
   constructor(props : Props) {
       super(props);
 
+      this.clickOrder = this.clickOrder.bind(this);
+     
       this.state = {
+        selectedOrderId : null
       }
     }
   
@@ -31,16 +35,22 @@ export class OrderUI extends Component<Props, State> {
       OrderAPI.getOrderData().then(
         restAPIOrders => {
             this.props.ordersInitialize(restAPIOrders)
-          }
-        );
-      }
+         }
+      );
+    }
+
+    clickOrder(orderId : number) : void {
+      this.setState(prevState => {
+        return {selectedOrderId: orderId};
+      });
+    }
   
     render() {
       return (
         <div>
-            <OrderList/>
+            <OrderList clickOrder={this.clickOrder} />
             <h1>Orderlines:</h1>
-            <OrderlineList/>  
+            <OrderlineList selectedOrderId={this.state.selectedOrderId}/>  
         </div>
       );
     }

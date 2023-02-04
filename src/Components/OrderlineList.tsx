@@ -5,16 +5,24 @@ import { useSelector } from "react-redux";
 import OrderlineRowUI from './OrderlineRowUI';
 
 import {OrderLine } from '../Interfaces/OrderLine';
-import { getSelectedOrder } from "../Features/SelectedOrderSlice"
+import {Order } from '../Interfaces/Order';
+import { selectAllOrders } from "../Features/OrderSlice"
 
 interface Props {
-
-  }
+  selectedOrderId : number | null;
+}
   
-export default function OrderlineList({}: Props) {
-   const order = useSelector(getSelectedOrder)
+export default function OrderlineList({selectedOrderId}: Props) {
 
-    return (
+  const allOrders = useSelector(selectAllOrders);
+
+  let order : Order | null = null;
+  if (selectedOrderId !== null) {
+    const foundOrder = allOrders.find(o => o.id === selectedOrderId);
+    order = foundOrder || null;
+  }
+
+  return (
         <div>
           <Table striped bordered hover>
             <thead>
@@ -26,9 +34,9 @@ export default function OrderlineList({}: Props) {
               </tr>
             </thead>
             <tbody>
-              {order?.orderlines.map(orderline => {
-                return <OrderlineRowUI key={orderline.id} orderline={orderline} orderId={order.id}/>
-              })}
+            {order ? order.orderlines.map(orderline => {
+              return <OrderlineRowUI key={orderline.id} orderline={orderline} orderId={order!.id} />
+            }) : null}
             </tbody>
             <tfoot>
               <tr>

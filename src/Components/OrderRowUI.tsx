@@ -4,17 +4,17 @@ import {OrderLine } from '../Interfaces/OrderLine';
 
 import { useDispatch } from "react-redux";
 import { updateCustomerName, updateCustomerEmail, updateCustomerPhone, updateDeliveryDate } from "../Features/OrderSlice";
-import { selectedOrderInitialize } from "../Features/SelectedOrderSlice";
 
 interface Props {
     order: Order;
+    clickOrder: (orderId : number) => void;
 }
 
-export default function OrderRowUI({order}: Props) {
+export default function OrderRowUI({order, clickOrder}: Props) {
   const dispatch = useDispatch();
 
   return (
-    <tr key={order.id} onClick={(e) => dispatch(selectedOrderInitialize(order))}>
+    <tr key={order.id} onClick={() => clickOrder(order.id)}>
         <td>{order.orderNumber}</td>
         <td>
             <input type="text" 
