@@ -1,7 +1,8 @@
 import {OrderLine } from '../Interfaces/OrderLine';
 import {Order } from '../Interfaces/Order';
+import {configValues} from '../data/configValues';
 
-const API_URL = 'https:/localhost:50870/';
+const API_URL = configValues.apiUrl;
 
 class OrderAPI {
     async getOrderData() : Promise<Order[]> {

@@ -1,5 +1,5 @@
 import React from 'react';
-import OrderUI from './Components/OrderUI';
+import OrderUI from './pages/Order/OrderUI';
 import {Order } from './Interfaces/Order';
 
 import './App.css';

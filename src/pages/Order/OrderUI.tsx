@@ -1,11 +1,11 @@
 import React, {useState, Component} from 'react';
-import OrderAPI from '../API/OrderAPI';
+import OrderAPI from '../../api/OrderAPI';
 import OrderList from './OrderList';
 import OrderlineList from './OrderlineList';
 import { connect } from 'react-redux';
-import { ordersInitialize } from "../Features/OrderSlice";
+import { ordersInitialize } from "../../Features/OrderSlice";
 
-import {Order } from '../Interfaces/Order';
+import {Order } from '../../Interfaces/Order';
 
 
 
