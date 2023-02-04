@@ -3,9 +3,9 @@ import OrderAPI from '../../api/OrderAPI';
 import OrderList from './OrderList';
 import OrderlineList from './OrderlineList';
 import { connect } from 'react-redux';
-import { ordersInitialize } from "../../Features/OrderSlice";
+import { ordersInitialize } from "../../features/OrderSlice";
 
-import {Order } from '../../Interfaces/Order';
+import {Order } from '../../interfaces/Order';
 
 
 

@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import { useDispatch } from "react-redux";
-import { updateOrder } from "../../Features/OrderSlice";
+import { updateOrder } from "../../features/OrderSlice";
 import OrderAPI from '../../api/OrderAPI';
 
-import {OrderLine } from '../../Interfaces/OrderLine';
-import {Order } from '../../Interfaces/Order';
+import {OrderLine } from '../../interfaces/OrderLine';
+import {Order } from '../../interfaces/Order';
 interface Props {
     orderline: OrderLine;
     order: Order;

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {Order } from '../Interfaces/Order';
-import {OrderLine } from '../Interfaces/OrderLine';
+import {Order } from '../interfaces/Order';
+import {OrderLine } from '../interfaces/OrderLine';
 
 
 const initialState : Order[]  = []

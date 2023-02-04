@@ -5,13 +5,13 @@ import Table from 'react-bootstrap/Table';
 import OrderRowUI from './OrderRowUI';
 import Button from 'react-bootstrap/Button';
 import OrderAPI from '../../api/OrderAPI';
-import { createOrder } from "../../Features/OrderSlice";
+import { createOrder } from "../../features/OrderSlice";
 
-import {Order } from '../../Interfaces/Order';
-import {OrderLine } from '../../Interfaces/OrderLine';
+import {Order } from '../../interfaces/Order';
+import {OrderLine } from '../../interfaces/OrderLine';
 
 import { PageSelector } from "../../components/PageSelector";
-import { selectAllOrders } from "../../Features/OrderSlice"
+import { selectAllOrders } from "../../features/OrderSlice"
 
 interface Props {
   clickOrder: (orderId : number) => void;

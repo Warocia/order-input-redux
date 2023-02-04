@@ -1,6 +1,6 @@
 import React from 'react';
 import OrderUI from './pages/Order/OrderUI';
-import {Order } from './Interfaces/Order';
+import {Order } from './interfaces/Order';
 
 import './App.css';
 
