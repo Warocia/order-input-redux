@@ -40,10 +40,10 @@ export default function OrderlineList({selectedOrderId}: Props) {
             </tbody>
             <tfoot>
               <tr>
-                <th>Total</th>
+              <th>Total</th>
+                <th>{order?.orderlines.reduce((sum, current) => sum + current.count, 0)}</th>
                 <th></th>
-                <th></th>
-                <th>€</th>
+                <th>{order?.orderlines.reduce((sum, current) => sum + (current.count * current.unitCost), 0)}€</th>
               </tr>
             </tfoot>
           </Table>
