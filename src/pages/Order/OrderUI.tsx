@@ -1,16 +1,20 @@
 import React, {useState, Component} from 'react';
 import OrderAPI from '../../api/OrderAPI';
+import ProductAPI from '../../api/ProductAPI';
 import OrderList from './OrderList';
 import OrderlineList from './OrderlineList';
 import { connect } from 'react-redux';
 import { ordersInitialize } from "../../features/OrderSlice";
 
 import {Order } from '../../interfaces/Order';
+import { Product } from '../../interfaces/Product';
+import { productsInitialize } from '../../features/ProductSlice';
 
 
 
 interface Props {  
   ordersInitialize: (data: Order[]) => void;
+  productsInitialize: (data: Product[]) => void;
 }
 
 
@@ -37,6 +41,12 @@ export class OrderUI extends Component<Props, State> {
             this.props.ordersInitialize(restAPIOrders)
          }
       );
+
+      ProductAPI.getProductData().then(
+        restAPIProducts => {
+            this.props.productsInitialize(restAPIProducts)
+         }
+      );
     }
 
     clickOrder(orderId : number) : void {
@@ -58,7 +68,8 @@ export class OrderUI extends Component<Props, State> {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    ordersInitialize: (data: Order[]) => dispatch(ordersInitialize(data))
+    ordersInitialize: (data: Order[]) => dispatch(ordersInitialize(data)),
+    productsInitialize: (data: Product[]) => dispatch(productsInitialize(data))
   };
 };
 

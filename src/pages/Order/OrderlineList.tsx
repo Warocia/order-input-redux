@@ -31,7 +31,7 @@ export default function OrderlineList({selectedOrderId}: Props) {
     if(order){
       const emptyOrderLine: OrderLine = {
         id: 0,
-        productName: '',
+        productId: null,
         count: 0,
         unitCost: 0,
         totalCost: 0,

@@ -1,6 +1,8 @@
+import {Product } from './Product';
+
 export interface OrderLine {
     id: number;
-    productName: string;
+    productId: number | null;
     count: number;
     unitCost: number;
     totalCost: number;
