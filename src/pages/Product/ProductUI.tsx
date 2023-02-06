@@ -43,7 +43,14 @@ function ProductUI() {
     const deleteThisProduct = {...row};
 
     const success = await ProductAPI.deleteProduct(deleteThisProduct.id);
-    success && dispatch(removeProduct({id : deleteThisProduct.id}));
+
+    if(success){
+      dispatch(removeProduct({id : deleteThisProduct.id}));
+    }
+    else
+    {
+      alert("Cannot remove product!")
+    }
   }
 
   function rowKeyGetter(row: Product) {
