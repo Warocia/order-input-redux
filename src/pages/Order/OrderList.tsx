@@ -4,14 +4,14 @@ import { useDispatch } from "react-redux";
 import Table from 'react-bootstrap/Table';
 import OrderRowUI from './OrderRowUI';
 import Button from 'react-bootstrap/Button';
-import OrderAPI from '../../api/OrderAPI';
-import { createOrder } from "../../features/OrderSlice";
+import OrderAPI from '../../API/OrderAPI';
+import { createOrder } from "../../Features/OrderSlice";
 
-import {Order } from '../../interfaces/Order';
-import {OrderLine } from '../../interfaces/OrderLine';
+import {Order } from '../../Interfaces/Order';
+import {OrderLine } from '../../Interfaces/OrderLine';
 
-import { PageSelector } from "../../components/PageSelector";
-import { selectAllOrders } from "../../features/OrderSlice"
+import { PageSelector } from "../../Components/PageSelector";
+import { selectAllOrders } from "../../Features/OrderSlice"
 
 interface Props {
   clickOrder: (orderId : number) => void;

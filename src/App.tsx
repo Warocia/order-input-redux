@@ -1,12 +1,12 @@
 import React from 'react';
 import OrderUI from './pages/Order/OrderUI';
 import ProductUI from './pages/Product/ProductUI';
-import {Order } from './interfaces/Order';
+import {Order } from './Interfaces/Order';
 import {
   Routes,
   Route,
 } from "react-router-dom";
-import Sidenav from "./components/Sidenav";
+import Sidenav from "./Components/Sidenav";
 import './App.css';
 
 
