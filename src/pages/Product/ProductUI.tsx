@@ -2,14 +2,14 @@ import React, {useState, useEffect} from 'react'
 import ReactDataGrid, { RowsChangeData, textEditor } from "react-data-grid";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { Product } from '../../interfaces/Product';
-import { selectAllProducts, productsInitialize, updateProducts, createProduct, removeProduct } from "../../features/ProductSlice"
-import ProductAPI from '../../api/ProductAPI';
+import { Product } from '../../Interfaces/Product';
+import { selectAllProducts, productsInitialize, updateProducts, createProduct, removeProduct } from "../../Features/ProductSlice"
+import ProductAPI from '../../API/ProductAPI';
 import Button from 'react-bootstrap/Button';
 import "bootstrap/dist/css/bootstrap.css";
 import './ReactDataGridProduct.css';
 
-import NumericEditor from '../../components/NumericEditor';
+import NumericEditor from '../../Components/NumericEditor';
 
 
 function ProductUI() {

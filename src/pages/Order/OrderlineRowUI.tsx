@@ -2,15 +2,15 @@ import React, {useState} from 'react'
 import { useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 import { useDispatch } from "react-redux";
-import { updateOrder } from "../../features/OrderSlice";
-import OrderAPI from '../../api/OrderAPI';
-import ProductAPI from '../../api/ProductAPI';
-import { SearchableDropdown } from "../../components/SearchableDropdown";
+import { updateOrder } from "../../Features/OrderSlice";
+import OrderAPI from '../../API/OrderAPI';
+import ProductAPI from '../../API/ProductAPI';
+import { SearchableDropdown } from "../../Components/SearchableDropdown";
 
-import {OrderLine } from '../../interfaces/OrderLine';
-import {Order } from '../../interfaces/Order';
+import {OrderLine } from '../../Interfaces/OrderLine';
+import {Order } from '../../Interfaces/Order';
 
-import { selectAllProducts } from "../../features/ProductSlice"
+import { selectAllProducts } from "../../Features/ProductSlice"
 
 interface Props {
     orderline: OrderLine;
