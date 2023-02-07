@@ -9,11 +9,15 @@ import Button from 'react-bootstrap/Button';
 import "bootstrap/dist/css/bootstrap.css";
 import './ReactDataGridProduct.css';
 
+import NumericEditor from '../../components/NumericEditor';
+
+
 function ProductUI() {
   const dispatch = useDispatch();
   const allProducts = useSelector(selectAllProducts);
   
   const [rows, setRows] =  useState<Product[]>([]);
+ 
 
   useEffect(() => {
     ProductAPI.getProductData().then(
@@ -22,13 +26,12 @@ function ProductUI() {
        }
     );
   }, []);
-
-  
- 
   
   const columns = [
       { key: "productName", name: "Product Name", editable: true, editor: textEditor, width: 200, resizable: true},
       { key: "description", name: "Description", editable: true, editor: textEditor, width: 700, resizable: true},
+      { key: "costPrice", name: "Cost Price", editable: true, width: 150, editor: NumericEditor, resizable: true},
+      { key: "salesPrice", name: "Sales Price", editable: true, width: 150, editor: NumericEditor, resizable: true},
       {
         key: 'delete',
         name: 'Action',
@@ -89,9 +92,11 @@ function ProductUI() {
             headerRowHeight={45}
             rowHeight={45}
           />
-          <Button onClick={() => addNewProduct({ id: 0, productName: '', description: ''})}>Add Product</Button>
+          <Button onClick={() => addNewProduct({ id: 0, productName: '', description: '', costPrice: 0, salesPrice:0})}>Add Product</Button>
       </div>
     )
   }
   
   export default ProductUI
+
+

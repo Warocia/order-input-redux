@@ -33,9 +33,11 @@ export default function OrderlineList({selectedOrderId}: Props) {
         id: 0,
         productId: null,
         count: 0,
-        unitCost: 0,
-        totalCost: 0,
-        costUnit: ''
+        unitCostPrice: 0,
+        totalUnitCostPrice: 0,
+        unitSalesPrice: 0,
+        salesPriceTotal: 0,
+        priceUnit: '€'
       };
   
       const newOrderlines = [
@@ -65,7 +67,11 @@ export default function OrderlineList({selectedOrderId}: Props) {
                 <th>Product Name</th>
                 <th>Count</th>
                 <th>Unit Cost</th>
-                <th>Total Cost</th>
+                <th>Total Unit Cost</th>
+                <th>Unit Sales Price</th>
+                <th>Total Unit Sales Price</th>
+                <th>Profit</th>
+                <th>Margin</th>
                 <th></th>
               </tr>
             </thead>
@@ -77,9 +83,13 @@ export default function OrderlineList({selectedOrderId}: Props) {
             <tfoot>
               <tr>
               <th>Total</th>
-                <th>{order?.orderlines.reduce((sum, current) => sum + current.count, 0)}</th>
+                <th>{order?.orderlines.reduce((sum, current) => sum + current.count, 0).toFixed(2)}</th>
                 <th></th>
-                <th>{order?.orderlines.reduce((sum, current) => sum + (current.count * current.unitCost), 0)}€</th>
+                <th>{order?.orderlines.reduce((sum, current) => sum + (current.count * current.totalUnitCostPrice), 0).toFixed(2)}€</th>
+                <th></th>
+                <th>{order?.orderlines.reduce((sum, current) => sum + (current.count * current.salesPriceTotal), 0).toFixed(2)}€</th>
+                <th></th>
+                <th></th>
                 <th>{order ? <Button onClick={handleAddClick}>Add</Button> : null}
                 </th>
               </tr>
