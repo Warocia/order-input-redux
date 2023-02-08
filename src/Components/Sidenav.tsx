@@ -13,9 +13,9 @@ export default function Sidenav() {
         setopen(!open)
         
     }
-
+    
     return (
-        <div className={open?styles.sidenav:styles.sidenavClosed}>
+        <div data-testid="sidenav" className={open?styles.sidenav:styles.sidenavClosed}>
             <button className={styles.menuBtn} onClick={toggleOpen}>
                 {open? <KeyboardDoubleArrowLeftIcon />: <KeyboardDoubleArrowRightIcon />}
             </button>

@@ -57,7 +57,7 @@ export class OrderUI extends Component<Props, State> {
   
     render() {
       return (
-        <div>
+        <div data-testid="order-ui">
              <OrderList clickOrder={this.clickOrder} />
             <h1>Orderlines:</h1>
             <OrderlineList selectedOrderId={this.state.selectedOrderId}/>  

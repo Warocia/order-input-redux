@@ -37,7 +37,7 @@ function ProductUI() {
         name: 'Action',
         maxWidth: 35,
         formatter: (props : any) => (
-          <Button onClick={() => handleRowDelete(props.row)}>X</Button>
+          <Button data-testid={`delete-${props.row.id}`} onClick={() => handleRowDelete(props.row)}>X</Button>
         ),
       }
   ];
@@ -83,7 +83,7 @@ function ProductUI() {
   };
 
   return (
-      <div>
+      <div data-testid="product-ui">
          <ReactDataGrid 
             columns={columns}
             rows={allProducts}
@@ -91,8 +91,9 @@ function ProductUI() {
             onRowsChange={handleUpdatedRows}
             headerRowHeight={45}
             rowHeight={45}
+            enableVirtualization = {false}
           />
-          <Button onClick={() => addNewProduct({ id: 0, productName: '', description: '', costPrice: 0, salesPrice:0})}>Add Product</Button>
+          <Button data-testid="product-ui-addNewProduct" onClick={() => addNewProduct({ id: 0, productName: '', description: '', costPrice: 0, salesPrice:0})}>Add Product</Button>
       </div>
     )
   }
