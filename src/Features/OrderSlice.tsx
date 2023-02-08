@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AnyAction, createSlice, Reducer } from "@reduxjs/toolkit";
 import {Order } from '../Interfaces/Order';
 import {OrderLine } from '../Interfaces/OrderLine';
 
@@ -55,4 +55,4 @@ export const selectAllOrders = (state: { orders: Order[] }) => state.orders;
 
 export const { ordersInitialize, updateOrder, createOrder, deleteOrder } = ordersSlice.actions
 
-export default ordersSlice.reducer
+export default ordersSlice.reducer;
