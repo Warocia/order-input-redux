@@ -9,5 +9,6 @@ export interface OrderLine {
     unitSalesPrice: number;
     salesPriceTotal: number;
     priceUnit: string;
+    
 }
   

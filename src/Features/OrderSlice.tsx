@@ -1,6 +1,6 @@
 import { AnyAction, createSlice, Reducer } from "@reduxjs/toolkit";
-import {Order } from '../Interfaces/Order';
-import {OrderLine } from '../Interfaces/OrderLine';
+import {Order } from '../Model/Order';
+import {OrderLine } from '../Model/OrderLine';
 
 
 const initialState : Order[]  = []

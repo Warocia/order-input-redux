@@ -1,5 +1,5 @@
-import {OrderLine } from '../Interfaces/OrderLine';
-import {Order } from '../Interfaces/Order';
+import {OrderLine } from '../Model/OrderLine';
+import {Order } from '../Model/Order';
 import {configValues} from '../data/configValues';
 
 const API_URL = configValues.apiUrl;

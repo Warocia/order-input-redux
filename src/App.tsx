@@ -1,7 +1,7 @@
 import React from 'react';
 import OrderUI from './pages/Order/OrderUI';
 import ProductUI from './pages/Product/ProductUI';
-import {Order } from './Interfaces/Order';
+import {Order } from './Model/Order';
 import {
   Routes,
   Route,

@@ -1,5 +1,5 @@
 
-import {Product } from '../Interfaces/Product';
+import {Product } from '../Model/Product';
 import {configValues} from '../data/configValues';
 
 const API_URL = configValues.apiUrl;
