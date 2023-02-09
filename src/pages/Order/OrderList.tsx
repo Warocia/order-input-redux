@@ -7,8 +7,8 @@ import Button from 'react-bootstrap/Button';
 import OrderAPI from '../../API/OrderAPI';
 import { createOrder } from "../../Features/OrderSlice";
 
-import {Order } from '../../Interfaces/Order';
-import {OrderLine } from '../../Interfaces/OrderLine';
+import {Order } from '../../Model/Order';
+import {OrderLine } from '../../Model/OrderLine';
 
 import { PageSelector } from "../../Components/PageSelector";
 import { selectAllOrders } from "../../Features/OrderSlice"

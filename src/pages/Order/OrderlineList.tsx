@@ -8,8 +8,9 @@ import OrderAPI from '../../API/OrderAPI';
 
 import OrderlineRowUI from './OrderlineRowUI';
 
-import {OrderLine } from '../../Interfaces/OrderLine';
-import {Order } from '../../Interfaces/Order';
+import {OrderLine } from '../../Model/OrderLine';
+import {Order } from '../../Model/Order';
+import {OrderLineExtension } from '../../Model/OrderLineExtension';
 import { selectAllOrders } from "../../Features/OrderSlice"
 
 interface Props {
@@ -77,7 +78,9 @@ export default function OrderlineList({selectedOrderId}: Props) {
             </thead>
             <tbody>
             {order ? order.orderlines.map(orderline => {
-              return <OrderlineRowUI key={orderline.id} orderline={orderline} order={order!} />
+              return <OrderlineRowUI key={orderline.id} 
+                orderline={new OrderLineExtension(orderline.id, orderline.productId, orderline.count, orderline.totalUnitCostPrice,
+                  orderline.unitCostPrice, orderline.unitSalesPrice, orderline.salesPriceTotal, orderline.priceUnit)} order={order!} />
             }) : null}
             </tbody>
             <tfoot>

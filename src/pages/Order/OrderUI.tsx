@@ -6,8 +6,8 @@ import OrderlineList from './OrderlineList';
 import { connect } from 'react-redux';
 import { ordersInitialize } from "../../Features/OrderSlice";
 
-import {Order } from '../../Interfaces/Order';
-import { Product } from '../../Interfaces/Product';
+import {Order } from '../../Model/Order';
+import { Product } from '../../Model/Product';
 import { productsInitialize } from '../../Features/ProductSlice';
 
 

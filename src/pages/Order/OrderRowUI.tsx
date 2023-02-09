@@ -1,6 +1,6 @@
 import React from 'react'
-import {Order } from '../../Interfaces/Order';
-import {OrderLine } from '../../Interfaces/OrderLine';
+import {Order } from '../../Model/Order';
+import {OrderLine } from '../../Model/OrderLine';
 import OrderAPI from '../../API/OrderAPI';
 import Button from 'react-bootstrap/Button';
 

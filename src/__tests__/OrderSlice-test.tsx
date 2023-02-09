@@ -1,6 +1,6 @@
 import ordersSlice, { selectAllOrders, ordersInitialize, updateOrder, createOrder, deleteOrder } from '../Features/OrderSlice';
-import {Order } from '../Interfaces/Order';
-import {OrderLine } from '../Interfaces/OrderLine';
+import {Order } from '../Model/Order';
+import {OrderLine } from '../Model/OrderLine';
 import { Reducer, PayloadAction } from "@reduxjs/toolkit";
 import { useSelector } from 'react-redux';
 import '@testing-library/jest-dom';

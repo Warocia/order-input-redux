@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import ReactDataGrid, { RowsChangeData, textEditor } from "react-data-grid";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { Product } from '../../Interfaces/Product';
+import { Product } from '../../Model/Product';
 import { selectAllProducts, productsInitialize, updateProducts, createProduct, removeProduct } from "../../Features/ProductSlice"
 import ProductAPI from '../../API/ProductAPI';
 import Button from 'react-bootstrap/Button';

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import fetch, {FetchMock, enableFetchMocks} from 'jest-fetch-mock';
 import { productsInitialize, updateProducts, createProduct, removeProduct } from "../Features/ProductSlice";
 import ProductAPI from '../API/ProductAPI';
-import {Product } from '../Interfaces/Product';
+import {Product } from '../Model/Product';
 
 enableFetchMocks();
 

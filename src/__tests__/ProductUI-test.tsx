@@ -4,7 +4,7 @@ import { render, screen, fireEvent, waitFor, act, queryAllByAltText, queryByAltT
 import fetch, {FetchMock, enableFetchMocks} from 'jest-fetch-mock';
 import userEvent from '@testing-library/user-event'
 import ProductAPI from '../API/ProductAPI';
-import {Product } from '../Interfaces/Product';
+import {Product } from '../Model/Product';
 import ProductUI  from '../pages/Product/ProductUI';
 import { store } from '../app/store';
 import '@testing-library/jest-dom';

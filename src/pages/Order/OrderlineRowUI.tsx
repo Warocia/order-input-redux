@@ -7,13 +7,14 @@ import OrderAPI from '../../API/OrderAPI';
 import ProductAPI from '../../API/ProductAPI';
 import { SearchableDropdown } from "../../Components/SearchableDropdown";
 
-import {OrderLine } from '../../Interfaces/OrderLine';
-import {Order } from '../../Interfaces/Order';
+import {OrderLineExtension } from '../../Model/OrderLineExtension';
+import {Order } from '../../Model/Order';
+import {OrderLine } from '../../Model/OrderLine';
 
 import { selectAllProducts } from "../../Features/ProductSlice"
 
 interface Props {
-    orderline: OrderLine;
+    orderline: OrderLineExtension;
     order: Order;
 }
 
@@ -70,11 +71,19 @@ export default function OrderlineRowUI({orderline, order}: Props) {
   };
 
   const handleProductCountChange = async (e: React.FocusEvent<HTMLInputElement>) => {
-    const newOrderline = { ...orderline };
-    newOrderline.count = e.target.valueAsNumber;
 
-    newOrderline.totalUnitCostPrice = newOrderline.unitCostPrice * newOrderline.count;
-    newOrderline.salesPriceTotal = newOrderline.unitSalesPrice * newOrderline.count;
+    const newOrderline = new OrderLineExtension(
+      orderline.id,
+      orderline.productId,
+      orderline.count,
+      orderline.totalUnitCostPrice,
+      orderline.unitCostPrice,
+      orderline.unitSalesPrice,
+      orderline.salesPriceTotal,
+      orderline.priceUnit
+    );
+
+    newOrderline.setCount(e.target.valueAsNumber);
     
     updateOrderline(newOrderline);
   };
@@ -123,10 +132,10 @@ export default function OrderlineRowUI({orderline, order}: Props) {
           {orderline.salesPriceTotal.toFixed(2)}{orderline.priceUnit}
         </td>
         <td>
-          {(100 * ((orderline.salesPriceTotal - orderline.totalUnitCostPrice) / orderline.totalUnitCostPrice)).toFixed(2)} %
+          {orderline.calculateProfit().toFixed(2)}%
         </td>
         <td>
-          {(100 * ((orderline.salesPriceTotal - orderline.totalUnitCostPrice) / orderline.salesPriceTotal)).toFixed(2)} %
+          {orderline.calculateMargin().toFixed(2)}%
         </td>
         <td>
           <Button onClick={handleRemoveClick}>Remove</Button>
