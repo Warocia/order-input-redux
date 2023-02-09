@@ -112,12 +112,12 @@ export default function OrderlineRowUI({orderline, order}: Props) {
   };
   
   return (
-    <tr key={orderline.id}>
+    <tr key={orderline.id} data-testid="orderline-row">
         <td>
           <SearchableDropdown options={options} selectedId={selectedValue}  onValueChanged={handleValueChanged} />
         </td>
         <td>
-          <input type="number" defaultValue={orderline.count} onBlur={handleProductCountChange} />
+          <input type="number" data-testid={`orderline-row-count-${orderline.id}`} defaultValue={orderline.count} onBlur={handleProductCountChange} />
         </td>
         <td>
           {orderline.unitCostPrice.toFixed(2)}{orderline.priceUnit}

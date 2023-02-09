@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^8.20.0",
-    "@testing-library/user-event": "^14.4.3"
+    "@testing-library/user-event": "^14.4.3",
+    "@types/enzyme": "^3.10.12"
   }
 }

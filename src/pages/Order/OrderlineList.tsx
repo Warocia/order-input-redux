@@ -93,7 +93,7 @@ export default function OrderlineList({selectedOrderId}: Props) {
                 <th>{order?.orderlines.reduce((sum, current) => sum + (current.count * current.salesPriceTotal), 0).toFixed(2)}€</th>
                 <th></th>
                 <th></th>
-                <th>{order ? <Button onClick={handleAddClick}>Add</Button> : null}
+                <th>{order ? <Button data-testid="orderlineAddNew" onClick={handleAddClick}>Add</Button> : null}
                 </th>
               </tr>
             </tfoot>

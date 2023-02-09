@@ -70,7 +70,7 @@ export default function OrderList({clickOrder}: Props) {
               })}
             </tbody>
           </Table>
-          <Button onClick={handleAddClick}>Add</Button> 
+          <Button data-testid="orderAddNew" onClick={handleAddClick}>Add</Button> 
           <PageSelector
             pageCount={pageCount}
             currentPage={currentPage}

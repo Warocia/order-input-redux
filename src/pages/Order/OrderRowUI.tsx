@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 import { useDispatch } from "react-redux";
 import { updateOrder, deleteOrder } from "../../Features/OrderSlice";
+import { Row } from 'react-bootstrap';
 
 interface Props {
     order: Order;
@@ -53,7 +54,7 @@ export default function OrderRowUI({order, clickOrder}: Props) {
   };
 
   return (
-    <tr key={order.id} onClick={() => clickOrder(order.id)}>
+    <tr data-testid="order-row" key={order.id} onClick={() => clickOrder(order.id)}>
         <td>{order.orderNumber}</td>
         <td>
           <input type="text" defaultValue={order.customerName} onBlur={handleCustomerName} />
@@ -68,7 +69,7 @@ export default function OrderRowUI({order, clickOrder}: Props) {
           <input  type="date" defaultValue={order.deliveryDate.slice(0,10)} onBlur={handleDeliveryDate} />
         </td>
         <td>
-          <Button onClick={handleRemoveClick}>Remove</Button>
+          <Button data-testid={`order-delete-${order.id}`} onClick={handleRemoveClick}>Remove</Button>
         </td>
     </tr>
   )
