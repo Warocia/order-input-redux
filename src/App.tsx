@@ -1,6 +1,8 @@
 import React from 'react';
 import OrderUI from './pages/Order/OrderUI';
 import ProductUI from './pages/Product/ProductUI';
+import OrdersvisualizationUI from './pages/Ordersvisualization/OrdersvisualizationUI';
+
 import {Order } from './Model/Order';
 import {
   Routes,
@@ -19,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<OrderUI/>} />
         <Route path="/productpage" element={<ProductUI/>} />
+        <Route path="/ordersvisualization" element={<OrdersvisualizationUI/>} />
       </Routes>
       </div>
     </div>
