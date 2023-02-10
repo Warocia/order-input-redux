@@ -18,4 +18,17 @@ export abstract class ChartFactory {
 
         return Object.values(items);
     }
+
+    public static MakeCumulativeSumChart(chartItems : ChartItemOrder[]): ChartItemOrder[] {
+      let cumulativeSum = 0;
+      const cumulativeSumData = chartItems
+          .sort((a, b) => new Date(a.deliveryDate).valueOf() - new Date(b.deliveryDate).valueOf())
+          .map(item => {
+            cumulativeSum += item.amountEUR;
+            return new ChartItemOrder(item.deliveryDate, cumulativeSum);
+          }
+      );
+
+      return cumulativeSumData;
+    }  
 }
